@@ -465,81 +465,184 @@ public class RangeTest {
 	}
 	
 	
-	/*
-	 * public boolean intersects(double lower,
-                          double upper)
-	 *Returns true if the range intersects (overlaps) with the specified range, and false otherwise.
-	 *Parameters:
-	 *lower - the lower bound (should be <= upper bound).
-	 *upper - the upper bound (should be >= lower bound).
-	 *Returns:
-	 *true if the ranges intersect.
-	 * 
-	 * 
-	 */
 	
-	public static class IntersectsTest{
+	
+	public static class ExpandTest{
 		private Range testR;
+		private Range testR2;
 
 		@Before
 		public void setUp() throws Exception
 			{
 			testR = new Range(10.0, 30.0);
 			}
-		/* Testing to see if range contains a number in between the upper and the lower bound */
+		
+		
 		@Test
-		public void testValueInRangeForMethodContains() {
+		public void TestExceptionForMethodExpandTest(){
+	    	boolean flag = false;
+	    	try {
+	    		Range.expand(null, 0.5, 0.5);
+	    		fail("Null is not allowed as a parameter");
+	    	}catch(Exception e){
+	    		flag = true;
+	    	}
+	    	assertTrue("Test with null argument",flag);
+	    }
+		
+		@Test
+		public void testPositiveMarginsForMethodExpandTest() {
 			
-
-			assertEquals("The value lies in Range.", true, testR.contains(20.0));
+			testR2 = new Range(0.0, 40.0);
+			assertEquals("The expected range output doesnt match with the actual output", testR2, Range.expand(testR, 0.5, 0.5));
 		}
-		/* Testing to see if range contains a number that is less than the lower bound */
+		
 		@Test
-		public void testValueLessThanLowerBoundForMethodContains() {
-
-			assertEquals("The value is less than lower bound range value and lies inside Range.", false, testR.contains(-10.0));
+		public void testNegativeUpperMarginForMethodExpandTest() {
+			
+			testR2 = new Range(-10, 0);
+			assertEquals("The expected range output doesnt match with the actual output", testR2, Range.expand(testR, 0.5, -2.0));
 		}
-		/* Testing to see if range contains a number that is higher than the upper bound */
+		
 		@Test
-		public void testValueMoreThanUpperBoundForMethodContains() {
-
-			assertEquals("The value is more than upper bound range value and lies inside Range.", false, testR.contains(40.0));
+		public void testNegativeLowerMarginForMethodExpandTest() {
+			
+			testR2 = new Range(20.0, 50.0);
+			assertEquals("The expected range output doesnt match with the actual output", testR2, Range.expand(testR, -0.5, 1.0));
 		}
-
-		/* Testing to see if range contains the lower bound */
-		@Test
-		public void testLowerBoundRangeValueForMethodContains() {
-
-			assertEquals("The lower bound value lies in Range.", true, testR.contains(10.0));
-		}
-		/* Testing to see if range contains the upper bound */
-		@Test
-		public void testUpperBoundRangeValueForMethodContains() {
-
-			assertEquals("The upper bound value lies in Range.", true, testR.contains(30.0));
-		}
-
-		/* Testing to see when the input near the lower bound */
-		@Test
-		public void testLowerBoundRangeValueWithCloserValueForMethodContains() {
-
-			assertEquals("The lower bound value close but out of Range.", false, testR.contains(9.9999999999999999999999));
-		}
-
-		/* Testing to see when the input near the upper bound */
-		@Test
-		public void testUpperBoundRangeValueWithCloserValueForMethodContains() {
-
-			assertEquals("The upper bound value close but out of Range.", false, testR.contains(30.000000000000000000001));
-		}
+		
 
 		@After
 		public void tearDown()
 			{
 				System.out.println("Tear Down");
 				testR = null;
+				testR2 = null;
 			}
 
+		}
+	/*
+	 * Creates a new range by combining two existing ranges.
+	 *Note that:either range can be null, in which case the other range is returned;
+	 *if both ranges are null the return value is null.
+	 *Parameters:range1 - the first range (null permitted).
+	 *range2 - the second range (null permitted).
+	 *Returns: A new range subsuming both input ranges (possibly null).
+	 *
+	 */
+		public static class CombineTest{
+			private Range testR;
+			private Range testR2;
+			private Range testR3;
+
+			@Before
+			public void setUp() throws Exception
+				{
+				testR = new Range(10.0, 30.0);
+				testR2 = new Range(30.0, 60.0);
+				}
+			
+			@Test
+			public void testFirstRangeNullForMethodCombine()
+			{
+				testR3 = new Range(30.0, 60.0);
+				
+				assertEquals("The expected range output doesnt match with the actual output", testR3, Range.combine(null, testR2));
+				
+			}
+			
+			@Test
+			public void testSecondRangeNullForMethodCombine()
+			{
+				testR3 = new Range(10.0, 30.0);
+				
+				assertEquals("The expected range output doesnt match with the actual output", testR3, Range.combine(testR, null));
+				
+			}
+			
+			@Test
+			public void testBothNullRangeForMethodCombine()
+			{
+				testR3 = null;
+				
+				assertEquals("The expected range output doesnt match with the actual output", testR3, Range.combine(null, null));
+				
+			}
+			
+			@Test
+			public void testRangesForMethodCombine()
+			{
+				testR3 = new Range(10.0, 60.0);
+				
+				assertEquals("The expected range output doesnt match with the actual output", testR3, Range.combine(testR, testR2));
+				
+			}
+			
+			@After
+			public void tearDown()
+				{
+					System.out.println("Tear Down");
+					testR = null;
+					testR2 = null;
+					testR3 = null;
+				}
+			
+		}
+		
+		/*
+		 * public double constrain(double value)
+		 *Returns the value within the range that is closest to the specified value.
+		 *Parameters:value - the value to find the closest in-range value of.
+		 *Returns:The constrained value. If value is within the range, will return the input value.
+		 * 
+		 */
+		
+		public static class ConstrainTest
+		{
+			private Range testR;
+	
+
+			@Before
+			public void setUp() throws Exception
+				{
+				testR = new Range(10.0, 30.0);
+				}
+			
+			@Test
+			public void testInRangeValueForMethodConstrain()
+			{
+				double value = 20.1;
+				assertEquals("The Expected output doesnt match with the actual output.", 20.1, testR.constrain(value), .0000001d);
+			}
+			
+			@Test
+			public void testValueGreaterThanUpperLimitForMethodConstrain()
+			{
+				double value = 50.0;
+				assertEquals("The Expected output doesnt match with the actual output.", 30.0, testR.constrain(value), .0000001d);
+			}
+			
+			@Test
+			public void testValueSmallerThanLowerLimitForMethodConstrain()
+			{
+				double value = -100;
+				assertEquals("The Expected output doesnt match with the actual output.", 10.0, testR.constrain(value), .0000001d);
+			}
+			
+			@Test
+			public void testValueEqualToLowerLimitForMethodConstrain()
+			{
+				double value = 10.0;
+				assertEquals("The Expected output doesnt match with the actual output.", 10.0, testR.constrain(value), .0000001d);
+			}
+			
+			@After
+			public void tearDown()
+				{
+					System.out.println("Tear Down");
+					testR = null;
+
+				}
 		}
 	
 }
