@@ -124,6 +124,132 @@ public class RangeTest {
 	}
 	
 	/*
+	 * public double getUpperBound()
+	 * Returns the upper bound for the range.
+	 * Returns:The upper bound.
+	 */
+
+	/* Testing GetUpperBound methods in Range class */
+	public static class GetUpperBoundTest {
+	private Range testR;
+	private Range testR2;
+	private Range testR3;
+	/* Two Ranges are defined below (10.0 to 30.0 and -21.3 to -20.0) for testing purpose */
+	@Before
+	public void setUp() throws Exception
+		{
+		testR = new Range(10.0, 30.0);
+		testR2 = new Range(-21.3, -20.0);
+		testR3 = new Range(0.00000000001,9.0000000000001);
+		}
+	/* Testing to see if correct positive upper bound value is returned  */
+	@Test
+	public void testUpperBoundPositiveValueForMethodGetUpperBound() {
+		
+		assertEquals("The Upper bound value is.", 30.0, testR.getUpperBound(), .0000001d);
+	}
+		
+	/* Testing to see if correct negative upper bound value is returned  */
+	@Test
+	public void testUpperBoundNegativeValueForMethodGetUpperBound() {
+		
+		assertEquals("The Upper bound value is.", -20.0, testR2.getUpperBound(), .0000001d);
+	}
+
+	/* Testing to see if long decimal upper bound value is correctly returned  */
+	@Test
+	public void testLongDecimalUpperBoundValueForMethodGetUpperBound() {
+		
+		assertEquals("The Upper bound value is.", 9.0000000000001, testR3.getUpperBound(), .0000001d);
+	}
+
+	@After
+	public void tearDown()
+		{
+			System.out.println("Tear Down");
+			testR = null;
+			testR2 = null;
+			testR3 = null;
+		}
+
+	}
+	
+	/*
+	 * 
+	 * public double getCentralValue()
+	 * Returns the central (or median) value for the range.
+	 * Returns:The central value.
+	 *
+	 */
+	
+	public static class GetCentralValueTest {
+		private Range testR;
+		private Range testR2;
+		private Range testR3;
+		private Range testR4;
+		private Range testR5;
+		
+		@Before
+		public void setUp() throws Exception
+			{
+			testR = new Range(10.0, 30.0);
+			testR2 = new Range(-22.0, -20.0);
+			testR3 = new Range(0.00000000002,0.00000000004);
+			testR4 = new Range(-10, 20);
+			testR5 = new Range(100.0, 100.0);
+			
+			}
+		/* Testing to see if correct positive central value is returned  */
+		@Test
+		public void testPositiveValuesForMethodGetCentralValue() {
+			
+			assertEquals("The Central value is.", 20.0, testR.getCentralValue(), .0000001d);
+		}
+			
+		/* Testing to see if correct negative central value is returned  */
+		@Test
+		public void testNegativeValuesForMethodGetCentralValue() {
+			
+			assertEquals("The Central value is.", -21.0, testR2.getCentralValue(), .0000001d);
+		}
+		
+		/* Testing to see if long decimal positive central value is correctly returned  */
+		@Test
+		public void testLongDecimalCentralValueForMethodGetCentralValue() {
+			
+			assertEquals("The Central value is.", 0.00000000003, testR3.getCentralValue(), .0000001d);
+		}
+
+		
+		/* Testing to see if correct (negative or positive) central value is returned  */
+		@Test
+		public void testPositiveAndNegativeValuesForMethodGetCentralValue() {
+			
+			assertEquals("The Central value is.", 5.0, testR4.getCentralValue(), .0000001d);
+		}
+		
+		/* Testing to see if correct central value is returned  */
+		@Test
+		public void testSameValuesForMethodGetCentralValue() {
+			
+			assertEquals("The Central value is.", 100.0, testR5.getCentralValue(), .0000001d);
+		}
+
+		@After
+		public void tearDown()
+			{
+				System.out.println("Tear Down");
+				testR = null;
+				testR2 = null;
+				testR3 = null;
+				testR4 = null;
+				testR5 = null;
+			}
+
+		}
+	
+	
+	/*
 	 * getLength: public double getLength()
 	 * Returns the length of the range.
 	 * Returns:The length.
@@ -338,5 +464,82 @@ public class RangeTest {
 
 	}
 	
+	
+	/*
+	 * public boolean intersects(double lower,
+                          double upper)
+	 *Returns true if the range intersects (overlaps) with the specified range, and false otherwise.
+	 *Parameters:
+	 *lower - the lower bound (should be <= upper bound).
+	 *upper - the upper bound (should be >= lower bound).
+	 *Returns:
+	 *true if the ranges intersect.
+	 * 
+	 * 
+	 */
+	
+	public static class IntersectsTest{
+		private Range testR;
+
+		@Before
+		public void setUp() throws Exception
+			{
+			testR = new Range(10.0, 30.0);
+			}
+		/* Testing to see if range contains a number in between the upper and the lower bound */
+		@Test
+		public void testValueInRangeForMethodContains() {
+			
+
+			assertEquals("The value lies in Range.", true, testR.contains(20.0));
+		}
+		/* Testing to see if range contains a number that is less than the lower bound */
+		@Test
+		public void testValueLessThanLowerBoundForMethodContains() {
+
+			assertEquals("The value is less than lower bound range value and lies inside Range.", false, testR.contains(-10.0));
+		}
+		/* Testing to see if range contains a number that is higher than the upper bound */
+		@Test
+		public void testValueMoreThanUpperBoundForMethodContains() {
+
+			assertEquals("The value is more than upper bound range value and lies inside Range.", false, testR.contains(40.0));
+		}
+
+		/* Testing to see if range contains the lower bound */
+		@Test
+		public void testLowerBoundRangeValueForMethodContains() {
+
+			assertEquals("The lower bound value lies in Range.", true, testR.contains(10.0));
+		}
+		/* Testing to see if range contains the upper bound */
+		@Test
+		public void testUpperBoundRangeValueForMethodContains() {
+
+			assertEquals("The upper bound value lies in Range.", true, testR.contains(30.0));
+		}
+
+		/* Testing to see when the input near the lower bound */
+		@Test
+		public void testLowerBoundRangeValueWithCloserValueForMethodContains() {
+
+			assertEquals("The lower bound value close but out of Range.", false, testR.contains(9.9999999999999999999999));
+		}
+
+		/* Testing to see when the input near the upper bound */
+		@Test
+		public void testUpperBoundRangeValueWithCloserValueForMethodContains() {
+
+			assertEquals("The upper bound value close but out of Range.", false, testR.contains(30.000000000000000000001));
+		}
+
+		@After
+		public void tearDown()
+			{
+				System.out.println("Tear Down");
+				testR = null;
+			}
+
+		}
 	
 }
