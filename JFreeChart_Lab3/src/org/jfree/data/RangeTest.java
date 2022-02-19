@@ -772,11 +772,10 @@ public class RangeTest {
 				assertNull(Range.combineIgnoringNaN(r1,r2));
 			}
 			
-			
 			//branch coverage (true, false)
 			//input 1 is null
 			@Test
-			public void Arg1NullTestForMethodcombineIgnoringNaNTest(){
+			public void Arg1NullTestForMethodcombineIgnoringNaN(){
 				r2 = new Range (1,2);
 				assertEquals("test with null input1",r2, Range.combineIgnoringNaN(r1,r2));
 			}
@@ -807,9 +806,10 @@ public class RangeTest {
 		
 		//isNaNRange Method
 		public static class isNaNRangeTest{
-			Range r1;
+			private Range r1;
 			@Before
 			public void setUp() throws Exception{
+				
 				r1 = new Range (10,20);
 			}
 			
@@ -819,13 +819,234 @@ public class RangeTest {
 				assertTrue("Test with valid input", r1.isNaNRange());
 			}
 			
+			
 			@After
 			public void tearDown(){
 			}
 			
 		}
 		
-		
+		//scale Method
+		public static class scaleTest{
+			
+			private Range r1;
+			private Range r2;
+			
+			@Before
+			public void setUp() throws Exception{
+				
+				r1 = new Range (10,20);
+			}
+			
+			
+			//null range object
+			@Test
+			public void TestExceptionForMethodScale(){
+		    	boolean flag = false;
+		    	try {
+		    		Range.scale(null, 0.5);
+		    		fail("Null is not allowed as a parameter");
+		    	}catch(Exception e){
+		    		flag = true;
+		    	}
+		    	assertTrue("Test with null argument",flag);
+		    }
+			
+			//Negative Factor
+			@Test
+			public void TestExceptionWithNegativeFactorForMethodScale(){
+		    	boolean flag = false;
+		    	try {
+		    		Range.scale(r1, -0.5);
+		    		fail("Negative factor value is not allowed");
+		    	}catch(Exception e){
+		    		flag = true;
+		    	}
+		    	assertTrue("Test with Negative Factor",flag);
+		    }
+			
+			//Positive Factor and with a range object
+			
+			@Test
+			public void TestPositiveFactorAndRangeObjectForMethodScale()
+			{
+				r2 = new Range(10, 20);
+				assertEquals("The Expected output From Scale Method doesnot match with actual output", r2, Range.scale(r1, 1.0));
+				
+			}
+			
+			@After
+			public void tearDown(){
+				
+				r1 =null;
+				r2 = null;
+			}
+		}
+			
+			
+			//shift Method
+			public static class shiftTest{
+				
+				private Range r1;
+				private Range r2;
+				private Range r3;
+				
+				@Before
+				public void setUp() throws Exception{
+					
+					r1 = new Range (-20,20);
+					r3 = new Range(0, 0);
+				}
+				
+				
+				//null range object
+				@Test
+				public void TestExceptionForMethodScale(){
+			    	boolean flag = false;
+			    	try {
+			    		Range.shift(null, 0.5, true);
+			    		fail("Null is not allowed as a parameter");
+			    	}catch(Exception e){
+			    		flag = true;
+			    	}
+			    	assertTrue("Test with null argument",flag);
+			    }
+				
+				//zero crossing is allowed and range object is not null
+				
+				@Test
+				public void TestWithZeroCrossingForMethodShift()
+				{
+					r2 = new Range(1, 41);
+					
+					assertEquals("The Expected output From Shift Method doesnot match with actual output", r2, Range.shift(r1, 21.0, true));
+				}
+				
+				//zero crossing is not allowed and range object is not null
+				
+				@Test
+				public void TestWithoutZeroCrossingForMethodShift()
+				{
+					r2 = new Range(1, 41);
+					assertEquals("The Expected output From Shift Method doesnot match with actual output", r2, Range.shift(r1, 21.0, false));
+				}
+				
+				//zero crossing is not allowed and range object is not null and delta is zero
+				@Test
+				public void TestWithoutZeroCrossingWithZeroDeltaValueForMethodShift()
+				{
+					r2 = new Range(20, 20);
+					assertEquals("The Expected output From Shift Method doesnot match with actual output", r2, Range.shift(r3, 20, false));
+				}
+				
+				@After
+				public void tearDown(){
+					
+					r1 =null;
+					r2 = null;
+					r3  =null;
+				}
+			}
+				
+				//shift Method
+				public static class shift2Test{
+					
+					private Range r1;
+					private Range r2;
+					@Before
+					public void setUp() throws Exception{
+						
+						r1 = new Range (-20,20);
+					}
+					
+					
+					//Statement coverage Test
+					//Range object and positive delta value
+					@Test
+					public void testStmCovergeForMethodShift2()
+					{
+						r2 = new Range(1, 41);
+						
+						assertEquals("The Expected output From Shift Method doesnot match with actual output", r2, Range.shift(r1, 21.0));
+					}
+					
+					
+					@After
+					public void tearDown(){
+						
+						r1 =null;
+						r2 = null;
+					}
+			
+			
+		}
+				
+				
+			
+				//expandToInclude Method
+				public static class ExpandToIncludeTest
+				{
+					
+					private Range r1;
+					private Range r2;
+					private Range r3;
+					private Range r4;
+					@Before
+					public void setUp() throws Exception{
+						
+						r1 = new Range (10,20);
+						r3  =null;
+						r4 = new Range(20, 20);
+						
+					}
+					
+					//testing with null range object
+					@Test
+					public void testNullRangeObjectForMethodExpandToInclude()
+					{
+						r2 = new Range(20, 20);
+						
+						assertEquals("The Expected output From ExpandToInclude Method doesnot match with actual output", r2, Range.expandToInclude(r3, 20.0));
+						
+					}
+					
+					//testing with value less than lower range value
+					@Test
+					public void testValueLessThanLowerRangeValueForMethodExpandToInclude()
+					{
+						r2 = new Range(0, 20);
+						
+						assertEquals("The Expected output From ExpandToInclude Method doesnot match with actual output", r2, Range.expandToInclude(r1, 0));
+					}
+					
+					//testing with value greater than upper range value
+					@Test
+					public void testValueGreaterThanUpperRangeValueForMethodExpandToInclude()
+					{
+						r2 = new Range(10, 100);
+						
+						assertEquals("The Expected output From ExpandToInclude Method doesnot match with actual output", r2, Range.expandToInclude(r1, 100));
+					}
+					
+					//testing with value equal to upper range and lower range value
+					@Test
+					public void testValueEqualToRangeLimitsForMethodExpandToInclude()
+					{
+						r2 = new Range(20, 20);
+						
+						assertEquals("The Expected output From ExpandToInclude Method doesnot match with actual output", r2, Range.expandToInclude(r4, 20));
+					}
 
+					@After
+					public void tearDown(){
+						
+						r1 =null;
+						r2 = null;
+						r3 = null;
+						r4 = null;
+					}
+					
+				}
+		
 	
 }
