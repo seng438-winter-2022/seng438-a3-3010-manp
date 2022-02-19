@@ -578,6 +578,7 @@ public class RangeTest {
 				
 			}
 			
+			
 			@After
 			public void tearDown()
 				{
@@ -632,17 +633,199 @@ public class RangeTest {
 			@Test
 			public void testValueEqualToLowerLimitForMethodConstrain()
 			{
-				double value = 10.0;
+				double value = 10;
 				assertEquals("The Expected output doesnt match with the actual output.", 10.0, testR.constrain(value), .0000001d);
+			}
+			
+			@Test
+			public void testValueEqualToUpperLimitForMethodConstrain()
+			{
+				double value = 30;
+				assertEquals("The Expected output doesnt match with the actual output.", 30.0, testR.constrain(value), .0000001d);
 			}
 			
 			@After
 			public void tearDown()
-				{
+			{
 					System.out.println("Tear Down");
 					testR = null;
 
-				}
+			}
 		}
+		
+		public static class hashCodeTest{
+			
+			private Range r1;
+			private Range r2;
+			@Before
+			public void setUp() throws Exception{
+				r1 = new Range (1,100);	
+				r2 = new Range (0,50);
+			}
+			
+			@Test
+			public void stmtCoverageTestForMethodHashCode() {
+				int x = r1.hashCode();
+				int y = r2.hashCode();
+				assertNotEquals("Test with different range input", x,y);
+			}
+			
+		}
+		
+		// Constructor TestCase
+		public static class construtorTest{
+			private Range r1;
+			@Before
+			public void setUp() throws Exception{
+				
+			}
+			
+			//test the branch with situation when lower > upper
+			@Test
+			public void BranchCoverageTestForConstructor() {
+				boolean flag = false;
+				try {
+					r1 = new Range(100,0);
+					fail("Error with Constructor: lower > upper accepted.");
+				}catch(Exception e){
+					flag = true;
+				}
+				assertTrue("Test Constructor with lower > up", flag);
+			}
+			@After
+			public void tearDown()
+			{
+			}
+		}
+		
+		// Method intersects TestCase
+		public static class intersectsTest{
+			private Range r1;
+			private Range r2;
+			@Before
+			public void setUp() throws Exception{
+				r1 = new Range(10, 30);
+			}
+			
+			//branch coverage (true, true)
+			@Test
+			public void LeftIntersectTestForIntersects() {
+				assertTrue("test with arg1 < this.lower, arg2 > this.lower", r1.intersects(0,20));
+			}
+			
+			//branch coverage (true, false)
+			@Test
+			public void LeftApartTestForIntersects() {
+				assertFalse("test with arg1 < this.lower, arg2 < this.lower", r1.intersects(0,5));
+			}
+			
+			//branch coverage (true, true, true)
+			@Test
+			public void RightIntersectTestForIntersects() {
+				assertTrue("test with arg1 > this.lower, arg2 > arg1, arg1 < this.upper", r1.intersects(20,40));
+			}
+			
+			//branch coverage (true, false, true)
+			@Test
+			public void RightApartTestForIntersects() {
+				assertFalse("test with arg1 > this.lower, arg2 > arg1, arg1 > this.upper", r1.intersects(50,100));
+			}
+			
+			//branch coverage (true, true, false)
+			@Test
+			public void InvalidInputTestForIntersects() {
+				assertFalse("test with arg1 > this.lower, arg2 < arg1, arg1 < this.upper", r1.intersects(20,15));
+			}
+			
+			//for single argument, stmt coverage test
+			@Test
+			public void IsIntersectTestForIntersects() {
+				r2 = new Range(15,20);
+				assertTrue("Intersect Input Range", r1.intersects(r2));
+			}
+			
+			//for single argument
+			@Test
+			public void NotIntersectTestForIntersects() {
+				r2 = new Range(0,5);
+				assertFalse("Apart Input Range", r1.intersects(r2));
+			}
+			
+			@After
+			public void tearDown()
+			{
+			}
+		}
+		
+		
+		//combineIgnoringNaN Method
+		public static class combineIgnoringNaNTest{
+			private Range r1;
+			private Range r2;
+			@Before
+			public void setUp() throws Exception{
+			}
+			
+			//both input null
+			@Test
+			public void BothNullTestForMethodcombineIgnoringNaNTest(){
+				assertNull(Range.combineIgnoringNaN(r1,r2));
+			}
+			
+			
+			//branch coverage (true, false)
+			//input 1 is null
+			@Test
+			public void Arg1NullTestForMethodcombineIgnoringNaNTest(){
+				r2 = new Range (1,2);
+				assertEquals("test with null input1",r2, Range.combineIgnoringNaN(r1,r2));
+			}
+			
+			//branch coverage (false, true)
+			//only input 2 is null
+			@Test
+			public void Arg2NullTestForMethodcombineIgnoringNaNTest(){
+				r1 = new Range (1,2);
+				assertEquals("test with null input1",r1, Range.combineIgnoringNaN(r1,r2));
+			}
+			
+			//branch coverage (false,false,true)
+			//both input valid, 
+			@Test
+			public void BothValidTestForMethodcombineIgnoringNaNTest(){
+				r1 = new Range (1,2);
+				r2 = new Range (2,3);
+				assertEquals("Both Valid input",new Range(2,3), Range.combineIgnoringNaN(r1,r2));
+			}
+			
+			
+			@After
+			public void tearDown()
+			{
+			}
+		}
+		
+		//isNaNRange Method
+		public static class isNaNRangeTest{
+			Range r1;
+			@Before
+			public void setUp() throws Exception{
+				r1 = new Range (10,20);
+			}
+			
+			@Test
+			// Stmt coverage test with valid input
+			public void stmtTestForMethodIsNaNRange() {
+				assertTrue("Test with valid input", r1.isNaNRange());
+			}
+			
+			@After
+			public void tearDown(){
+			}
+			
+		}
+		
+		
+
 	
 }
