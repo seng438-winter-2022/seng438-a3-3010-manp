@@ -19,11 +19,16 @@ Text…
 # 2 Manual data-flow coverage calculations for X and Y methods
 
 Text…
-![](images/Pic1.png)
+
+
 <p align="center">
-<alt="Material Bread logo">
- Figure 1- Simple Overview of the Project interface
+  <img width="400" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic1.png" alt="Material Bread logo">
 </p>
+<p align="center">
+   Figure 1- Library Main Page
+</p>
+ 
+ 
 # 3 A detailed description of the testing strategy for the new unit test
 
 Text…
