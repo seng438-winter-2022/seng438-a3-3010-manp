@@ -25,10 +25,60 @@ Text…
   <img width="400" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic1.png" alt="Material Bread logo">
 </p>
 <p align="center">
-   Figure 1- Library Main Page
+   Figure 1- Method: Range.Combine Diagram
+
+</p>
+
+
+<p align="center">
+  <img width="400" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic2.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 2- def and use for statements
+</p>
+
+<p align="center">
+  <img width="400" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic3.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 3- DU-Pair for each variable 
 </p>
  
  
+ <p align="center">
+  <img width="400" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic4.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 4- Method: DU Pair Coverage
+</p>
+
+<p align="center">
+  <img width="400" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic5.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 5- Method: DataUtilities.calculateColumnTotal
+</p>
+
+<p align="center">
+  <img width="400" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic6.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 6- def and use for statements
+</p>
+
+<p align="center">
+  <img width="400" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic7.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 7- DU-Pair for each variable 
+</p>
+
+<p align="center">
+  <img width="400" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic8.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 8- DU Pair Coverage
+</p>
 # 3 A detailed description of the testing strategy for the new unit test
 
 Text…
