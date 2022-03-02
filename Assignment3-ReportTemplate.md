@@ -19,7 +19,11 @@ Text…
 # 2 Manual data-flow coverage calculations for X and Y methods
 
 Text…
-
+![](images/Pic1.png)
+<p align="center">
+<alt="Material Bread logo">
+ Figure 1- Simple Overview of the Project interface
+</p>
 # 3 A detailed description of the testing strategy for the new unit test
 
 Text…
