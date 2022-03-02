@@ -535,6 +535,8 @@ public class RangeTest {
 			private Range testR2;
 			private Range testR3;
 
+			/* Creating new objects for testing purpose */
+		
 			@Before
 			public void setUp() throws Exception
 				{
@@ -542,6 +544,7 @@ public class RangeTest {
 				testR2 = new Range(30.0, 60.0);
 				}
 			
+			/* Testing the method combine when the first Range is null */
 			@Test
 			public void testFirstRangeNullForMethodCombine()
 			{
@@ -551,6 +554,7 @@ public class RangeTest {
 				
 			}
 			
+			/* Testing the method combine when the second Range is null */
 			@Test
 			public void testSecondRangeNullForMethodCombine()
 			{
@@ -560,6 +564,7 @@ public class RangeTest {
 				
 			}
 			
+			/* Testing the method combine when first and second Range objects are null */
 			@Test
 			public void testBothNullRangeForMethodCombine()
 			{
@@ -569,6 +574,8 @@ public class RangeTest {
 				
 			}
 			
+			
+			/* Testing the method combine when first and second Range objects are have values in them */
 			@Test
 			public void testRangesForMethodCombine()
 			{
