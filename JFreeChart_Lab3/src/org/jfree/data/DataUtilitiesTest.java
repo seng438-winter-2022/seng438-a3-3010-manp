@@ -867,7 +867,7 @@ public static class DoubleArrayEqualityTest extends DataUtilities {
 	    public void NullInputs() {
 	    	boolean equalilty = DataUtilities.equal (null, null);
 	    			
-	    			assertTrue("Test with first null array", equalilty);
+	    			assertTrue("Test with both null array", equalilty);
 	    }
 	    /*
 	     * Testing 2 array with 1 element different
@@ -877,7 +877,7 @@ public static class DoubleArrayEqualityTest extends DataUtilities {
 	    public void DifferentArrays() {
 	    	boolean equalilty = DataUtilities.equal (input, input4);
 	    			
-	    			assertFalse("Test with second null array", equalilty);
+	    			assertFalse("Test with different arrays", equalilty);
 	    }
 	    
 	    @After
@@ -922,7 +922,7 @@ public static class DoubleArrayEqualityTest extends DataUtilities {
 	    @Test
 	    public void NullArrayElementClone() {
 	    			
-	    	assertArrayEquals("testing clone returned", out2, DataUtilities.clone(input2));	
+	    	assertArrayEquals("testing clone returned with null element", out2, DataUtilities.clone(input2));	
 	    }
 	    
 	    

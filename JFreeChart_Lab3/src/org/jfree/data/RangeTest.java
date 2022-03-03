@@ -821,7 +821,7 @@ public class RangeTest {
 			public void BothValidTestForMethodcombineIgnoringNaNTest(){
 				r1 = new Range (1,2);
 				r2 = new Range (2,3);
-				assertEquals("Both Valid input",new Range(2,3), Range.combineIgnoringNaN(r1,r2));
+				assertEquals("Both Valid input",new Range(1,3), Range.combineIgnoringNaN(r1,r2));
 			}
 			
 			
@@ -954,7 +954,7 @@ public class RangeTest {
 				@Test
 				public void TestWithoutZeroCrossingForMethodShift()
 				{
-					r2 = new Range(1, 41);
+					r2 = new Range(0, 41);
 					assertEquals("The Expected output From Shift Method doesnot match with actual output", r2, Range.shift(r1, 21.0, false));
 				}
 				
@@ -992,7 +992,7 @@ public class RangeTest {
 					@Test
 					public void testStmCovergeForMethodShift2()
 					{
-						r2 = new Range(1, 41);
+						r2 = new Range(0, 41);
 						
 						assertEquals("The Expected output From Shift Method doesnot match with actual output", r2, Range.shift(r1, 21.0));
 					}
