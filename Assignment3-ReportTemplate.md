@@ -56,7 +56,7 @@ Text…
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic5.png" alt="Material Bread logo">
 </p>
 <p align="center">
-   Figure 5- Method: DataUtilities.calculateColumnTotal
+   Figure 5- Method: DataUtilities.calculateColumnTotal Diagram
 </p>
 
 <p align="center">
