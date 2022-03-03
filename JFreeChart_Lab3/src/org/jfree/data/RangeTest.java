@@ -466,18 +466,24 @@ public class RangeTest {
 	
 	
 	
-	
+	/*
+	 * public static Range expand(Range range, double lowerMargin, double upperMargin)
+	 * Returns object of type Range
+	 * Parameters: range, lowerMargin and upperMargin
+	 * 
+	 */
 	public static class ExpandTest{
 		private Range testR;
 		private Range testR2;
 
+		/* Creating a new object for testing purpose*/
 		@Before
 		public void setUp() throws Exception
 			{
 			testR = new Range(10.0, 30.0);
 			}
 		
-		
+		/* Seeing if exception will be thrown for null parameter*/
 		@Test
 		public void TestExceptionForMethodExpandTest(){
 	    	boolean flag = false;
@@ -489,21 +495,21 @@ public class RangeTest {
 	    	}
 	    	assertTrue("Test with null argument",flag);
 	    }
-		
+		/* Passing both positive values*/
 		@Test
 		public void testPositiveMarginsForMethodExpandTest() {
 			
 			testR2 = new Range(0.0, 40.0);
 			assertEquals("The expected range output doesnt match with the actual output", testR2, Range.expand(testR, 0.5, 0.5));
 		}
-		
+		/* Testing if a negative upper margin will be accepted*/
 		@Test
 		public void testNegativeUpperMarginForMethodExpandTest() {
 			
 			testR2 = new Range(-10, 0);
 			assertEquals("The expected range output doesnt match with the actual output", testR2, Range.expand(testR, 0.5, -2.0));
 		}
-		
+		/* Testing if a lower margin being negative will be accepted*/
 		@Test
 		public void testNegativeLowerMarginForMethodExpandTest() {
 			
@@ -609,13 +615,14 @@ public class RangeTest {
 		{
 			private Range testR;
 	
-
+			/* Creating a Range object of testing */
 			@Before
 			public void setUp() throws Exception
 				{
 				testR = new Range(10.0, 30.0);
 				}
 			
+			/* Testing a value that is within the range*/
 			@Test
 			public void testInRangeValueForMethodConstrain()
 			{
@@ -623,6 +630,7 @@ public class RangeTest {
 				assertEquals("The Expected output doesnt match with the actual output.", 20.1, testR.constrain(value), .0000001d);
 			}
 			
+			/* Testing a value that is greater than upper bound*/
 			@Test
 			public void testValueGreaterThanUpperLimitForMethodConstrain()
 			{
@@ -630,6 +638,7 @@ public class RangeTest {
 				assertEquals("The Expected output doesnt match with the actual output.", 30.0, testR.constrain(value), .0000001d);
 			}
 			
+			/* Testing a value that is lower than the lower bound*/
 			@Test
 			public void testValueSmallerThanLowerLimitForMethodConstrain()
 			{
@@ -637,6 +646,7 @@ public class RangeTest {
 				assertEquals("The Expected output doesnt match with the actual output.", 10.0, testR.constrain(value), .0000001d);
 			}
 			
+			/* Testing a value that is equal to the lower bound*/
 			@Test
 			public void testValueEqualToLowerLimitForMethodConstrain()
 			{
@@ -644,6 +654,7 @@ public class RangeTest {
 				assertEquals("The Expected output doesnt match with the actual output.", 10.0, testR.constrain(value), .0000001d);
 			}
 			
+			/* Testing a value that is equal to the upper bound*/
 			@Test
 			public void testValueEqualToUpperLimitForMethodConstrain()
 			{
@@ -660,16 +671,25 @@ public class RangeTest {
 			}
 		}
 		
+		/*
+		 * public int hashCode()
+		 *Returns integer hashcode for given range
+		 *Parameters: None
+		 *
+		 * 
+		 */
 		public static class hashCodeTest{
 			
 			private Range r1;
 			private Range r2;
+			
+			/* Create Range object for testing*/
 			@Before
 			public void setUp() throws Exception{
 				r1 = new Range (1,100);	
 				r2 = new Range (0,50);
 			}
-			
+			/* Testing if two different values will create a hashcode*/
 			@Test
 			public void stmtCoverageTestForMethodHashCode() {
 				int x = r1.hashCode();
