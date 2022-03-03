@@ -118,7 +118,7 @@ This test method checks if the range1(null) and range2(not null) is provided as 
 This test method checks whether the constructor throws an illegalArgumentException if the lower limit of the Range Object is greater than the upper limit of the Range Object.
 This test method increased the branch coverage for the Range Class by approximately 6% as it covers the missing branch in the Range Class Constructor.
 
-## Test5:testingStringObject() in EqualsTest for the Range Class 
+## Test5: testingStringObject() in EqualsTest for the Range Class 
 
 This test Method checks whether a String object is equal to a Range object. This test increases both the branch coverage and the condition coverage. It covers one of the branches in the equals method and also covers decision expression in the equals method and increases the condition coverage by approximately 4% for the Range class.
 
