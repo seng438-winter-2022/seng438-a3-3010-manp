@@ -125,7 +125,7 @@ This test Method checks whether a String object is equal to a Range object. This
 
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
-
+### Range Class
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic9.png" alt="Material Bread logo">
 </p>
@@ -133,28 +133,34 @@ This test Method checks whether a String object is equal to a Range object. This
    Figure 9- Branch Coverage for Range Class
 </p>
 
-
+</br>
+</br>
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic10.png" alt="Material Bread logo">
 </p>
 <p align="center">
    Figure 10- Condition Coverage for Range Class
 </p>
-
+</br>
+</br>
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic11.png" alt="Material Bread logo">
 </p>
 <p align="center">
    Figure 11- Statement Coverage for Range Class
 </p>
-
+</br>
+</br>
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic12.png" alt="Material Bread logo">
 </p>
 <p align="center">
    Figure 12- Coverage Table for Range Class
 </p>
+</br>
+</br>
 
+### Data Utilities Class
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic13.png" alt="Material Bread logo">
 </p>
@@ -162,21 +168,23 @@ This test Method checks whether a String object is equal to a Range object. This
    Figure 13- Branch Coverage for DataUtilities  
 </p>
 
-
+</br>
+</br>
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic14.png" alt="Material Bread logo">
 </p>
 <p align="center">
    Figure 14- Statement Coverage for DataUtilities  
 </p>
-
+</br>
+</br>
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic15.png" alt="Material Bread logo">
 </p>
 <p align="center">
    Figure 15- Condition Coverage for DataUtilities  
 </p>
-Text…
+
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
