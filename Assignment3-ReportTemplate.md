@@ -121,6 +121,28 @@ Text…
 <p align="center">
    Figure 12- Coverage Table for Range Class
 </p>
+
+<p align="center">
+  <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic13.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 13- Branch Coverage for DataUtilities  
+</p>
+
+
+<p align="center">
+  <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic14.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 14- Statement Coverage for DataUtilities  
+</p>
+
+<p align="center">
+  <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic15.png" alt="Material Bread logo">
+</p>
+<p align="center">
+   Figure 15- Condition Coverage for DataUtilities  
+</p>
 Text…
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
