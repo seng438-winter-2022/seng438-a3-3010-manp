@@ -25,9 +25,9 @@ In lab2, we did black box testing with some methods of DataUtilities class and R
 </p>
 <p align="center">
    Figure 1- Method: Range.Combine Diagram
-
 </p>
-
+</br>
+</br>
 
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic2.png" alt="Material Bread logo">
@@ -36,6 +36,8 @@ In lab2, we did black box testing with some methods of DataUtilities class and R
    Figure 2- def and use for statements
 </p>
 
+</br>
+</br>
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic3.png" alt="Material Bread logo">
 </p>
@@ -43,7 +45,8 @@ In lab2, we did black box testing with some methods of DataUtilities class and R
    Figure 3- DU-Pair for each variable 
 </p>
  
- 
+ </br>
+</br>
  <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic4.png" alt="Material Bread logo">
 </p>
@@ -60,21 +63,24 @@ In lab2, we did black box testing with some methods of DataUtilities class and R
 <p align="center">
    Figure 5- Method: DataUtilities.calculateColumnTotal Diagram
 </p>
-
+</br>
+</br>
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic6.png" alt="Material Bread logo">
 </p>
 <p align="center">
    Figure 6- def and use for statements
 </p>
-
+</br>
+</br>
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic7.png" alt="Material Bread logo">
 </p>
 <p align="center">
    Figure 7- DU-Pair for each variable 
 </p>
-
+</br>
+</br>
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic8.png" alt="Material Bread logo">
 </p>
@@ -88,7 +94,7 @@ In lab2, we did black box testing with some methods of DataUtilities class and R
 In this lab, our goal was to increase the code coverage for the Range class and for the Data Utilities class by creating the new unit tests. So, to increase the code coverage, we used white box testing technique. Initially, when we started the code coverage test on Range Class and Data Utilities class using the test cases that were created using the black box testing, we found that the statement coverage of the Range class was at about 20% , Branch coverage was at 16% and the Condition Coverage was at 25%. Similarly, for the Data Utilities class, the statement coverage was at 52%, Branch Coverage was at 42% and Condition Coverage was 60%.
 
 
-To increase the Statement coverage of both the Range Class and the Data Utilities class, we created the test cases that can cover all the statements of the Methods of the Range class and the Data Utilities Class. After implementing the new test cases, the statement coverage for the Range Class and for the Data Utilities class was increased to 93% and 100% respectively.  To increase the Branch coverage, we wrote the new test cases as such it covers the most the branches in the Range class and Data Utilities class. We also made DU pairs in some of the methods of the Range and Data Utilities class in order to increase the Branch coverage. After creating and implementing the new test cases, the Branch coverage was increased to 82% for the Range class and was increased to 91.7% for the Data Utilities class.  To increase the Condition Coverage for both the Range and Data Utilities Class, We used MC/DC(Modified Condition-Decision Criterion). This criteria helped in increasing the Condition Coverage of Range class to 100%  and 100% for the Data Utilities class.
+To increase the Statement coverage of both the Range Class and the Data Utilities class, we created the test cases that can cover all the statements of the Methods of the Range class and the Data Utilities Class. After implementing the new test cases, the statement coverage for the Range Class and for the Data Utilities class was increased to 93% and 100% respectively.  To increase the Branch coverage, we wrote the new test cases as such it covers the most of the branches in the Range class and Data Utilities class. We also made DU pairs in some of the methods of the Range and Data Utilities class in order to increase the Branch coverage. After creating and implementing the new test cases, the Branch coverage was increased to 82% for the Range class and was increased to 91.7% for the Data Utilities class.  To increase the Condition Coverage for both the Range and Data Utilities Class, We used MC/DC(Modified Condition-Decision Criterion). This criteria helped in increasing the Condition Coverage of Range class to 100%  and 100% for the Data Utilities class.
 
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
