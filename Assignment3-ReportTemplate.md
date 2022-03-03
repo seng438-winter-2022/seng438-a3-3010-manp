@@ -49,7 +49,7 @@ Text…
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic4.png" alt="Material Bread logo">
 </p>
 <p align="center">
-   Figure 4- Method: DU Pair Coverage
+   Figure 4- Range: DU Pair Coverage
 </p>
 
 <p align="center">
