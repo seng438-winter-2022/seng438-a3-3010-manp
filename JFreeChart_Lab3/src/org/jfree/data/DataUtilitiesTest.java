@@ -139,6 +139,37 @@ public class DataUtilitiesTest {
 		   assertEquals("Input Values2D object contains null value",0, result, .000000001d);
 		}
 		
+		
+		/******************************* Coverage Tests *************************/
+		
+		
+		/*
+		 * Testing the column total based on valid row index array
+		 */
+		
+		@Test
+		public void ColumnTotalBasedOnValidRowArray() {
+			final Values2D values = context.mock(Values2D.class);
+		    context.checking(new Expectations() {
+		        {
+		            one(values).getRowCount();
+		            will(returnValue(4));
+		            one(values).getValue(0, 0);
+		            will(returnValue(-5.000005));
+		            one(values).getValue(1, 0);
+		            will(returnValue(5.000005));
+		            one(values).getValue(2, 0);
+		            will(returnValue(30.000055));
+		            one(values).getValue(3, 0);
+		            will(returnValue(-30.000055));
+		        }
+		    });
+		    
+		    int validrows [] = {0, 1, 2, 3};
+		    double result = DataUtilities.calculateColumnTotal(values, 0, validrows);
+		    assertEquals("Adding 4 columns with valid row index array",result, 0, .000000001d);
+		}
+		
 	    @After
 	    public void tearDown() throws Exception {
 	    	context = null;
@@ -270,6 +301,37 @@ public class DataUtilitiesTest {
 		   double result = DataUtilities.calculateRowTotal(values, 0);
 		   assertEquals("Input Values2D object contains null value",0, result, .000000001d);
 		}
+		
+		
+		/**************************** coverage test ***************************/
+		
+		/*
+		 * Testing the row total based on valid column array index.
+		 */
+		@Test
+		public void RowValuesWithValidCols() {
+			final Values2D values = context.mock(Values2D.class);
+		    context.checking(new Expectations() {
+		        {
+		        	one(values).getColumnCount();
+		            will(returnValue(4));
+		            one(values).getValue(0, 0);
+		            will(returnValue(-5.000005));
+		            one(values).getValue(0, 1);
+		            will(returnValue(5.000005));
+		            one(values).getValue(0, 2);
+		            will(returnValue(30.000055));
+		            one(values).getValue(0, 3);
+		            will(returnValue(-30.000055));
+		        }
+		    });
+		    
+		    int [] validcols = {0, 1, 2, 3};
+		   
+		   double result = DataUtilities.calculateRowTotal(values, 0, validcols);
+		   assertEquals("Adding 4 rows based on valid column index array",0, result, .000000001d);
+		}
+		
 		
 	    @After
 	    public void tearDown() throws Exception {
@@ -731,10 +793,142 @@ public class DataUtilitiesTest {
 	    	}
 	    	assertFalse("Test with null argument",flag);
 	    }
+	}
+	    
+/********************************* coverage tests *************************************/
 
+
+public static class DoubleArrayEqualityTest extends DataUtilities {
+		
+		final double[][] input = {{0.00001, -2.5}, 
+									{10, -100.00005}};
+		final double[][] input2 = {{0.00001, -2.5}, 
+									{10, -100.00005}};
+		final double[][] input3 = {{0.00001, -2.5}, 
+								{10, -100.00005},
+								{1}};
+		final double[][] input4 = {{0.000001, -2.5}, 
+								{10, -100.00005}};
+
+		@Before
+		public void setup() {
+
+		}
+	    
+	    /*
+	     * Testing for 2 unequal arrays, different lengths
+	     */
+	    
+	    @Test
+	    public void UnequalDoubleArray() {
+	    	boolean equalilty = DataUtilities.equal (input, input3);
+	    			
+	    			assertFalse("Test with unequal arrays", equalilty);
+	    }
+	    
+	    /*
+	     * Testing for 2 equal arrays
+	     */
+	    
+	    @Test
+	    public void EqualDoubleArray() {
+	    	boolean equalilty = DataUtilities.equal (input, input2);
+	    			
+	    			assertTrue("Test with equal arrays", equalilty);
+	    }
+	    
+	    /*
+	     * Testing 1st array as null inputs
+	     */
+	    
+	    @Test
+	    public void NullFristInput() {
+	    	boolean equalilty = DataUtilities.equal (null, input);
+	    			
+	    			assertFalse("Test with first null array", equalilty);
+	    }
+	    
+	    /*
+	     * Testing 2nd array as null inputs
+	     */
+	    
+	    @Test
+	    public void NullSecondInput() {
+	    	boolean equalilty = DataUtilities.equal (input, null);
+	    			
+	    			assertFalse("Test with second null array", equalilty);
+	    }
+	    
+	    /*
+	     * Testing both inputs as null
+	     */
+	    
+	    @Test
+	    public void NullInputs() {
+	    	boolean equalilty = DataUtilities.equal (null, null);
+	    			
+	    			assertTrue("Test with first null array", equalilty);
+	    }
+	    /*
+	     * Testing 2 array with 1 element different
+	     */
+	    
+	    @Test
+	    public void DifferentArrays() {
+	    	boolean equalilty = DataUtilities.equal (input, input4);
+	    			
+	    			assertFalse("Test with second null array", equalilty);
+	    }
+	    
 	    @After
 	    public void tearDown() throws Exception {
+	    	
 	    }
 
+	}
+
+
+	public static class CloneArrayTest extends DataUtilities {
+		
+		final double[][] input = {{10, 20, 30.55}, 
+									{-1, -0.00009, -9999}};
+		final double[][] input2 = {{0 , 1 , 2},
+									null};
+		
+		final double[][] out = {{10, 20, 30.55}, 
+									{-1, -0.00009, -9999}};
+		final double[][] out2 = {{0 , 1 , 2},
+								null};
+	
+		@Before
+		public void setup() {
+	
+		}
+	    
+	    /*
+	     * Testing if clone returned as same as original array
+	     */
+	    
+	    @Test
+	    public void ArrayClone() {
+	    			
+	    	assertArrayEquals("testing clone returned", out, DataUtilities.clone(input));	
+	    }
+	    
+	    /*
+	     * Testing with null element in array
+	     */
+	    
+	    @Test
+	    public void NullArrayElementClone() {
+	    			
+	    	assertArrayEquals("testing clone returned", out2, DataUtilities.clone(input2));	
+	    }
+	    
+	    
+	    @After
+	    public void tearDown() throws Exception {
+	    	
+	    }
 	}
 }
