@@ -52,11 +52,11 @@ In lab2, we did black box testing with some methods of DataUtilities class and R
    Figure 4- DU Pair Coverage
 </p>
 
+## Data Utilities Class
+
 <p align="center">
   <img width="600" src="https://github.com/seng438-winter-2022/seng438-a3-3010-manp/blob/main/images/Pic5.png" alt="Material Bread logo">
 </p>
-
-## Data Utilities Class
 
 <p align="center">
    Figure 5- Method: DataUtilities.calculateColumnTotal Diagram
