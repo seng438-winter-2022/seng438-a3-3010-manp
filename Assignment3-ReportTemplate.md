@@ -2,19 +2,20 @@
 
 **Lab. Report #3 – Code Coverage, Adequacy Criteria and Test Case Correlation**
 
-| Group \#:      |     |
+| Group \#:23    |     |
 | -------------- | --- |
-| Student Names: |     |
-|                |     |
-|                |     |
-|                |     |
+| Manpreet Singh |     |
+| Tianfan Zhou   |     |
+| Girimer Singh  |     |
+| Muhammad Shakeel|     |
 
 (Note that some labs require individual reports while others require one report
 for each group. Please see each lab document for details.)
 
 # 1 Introduction
 
-Text…
+In lab2, we did black box testing with some methods of DataUtilities class and Range class within JFree Chart. We used some testing technologies such as equivalence class testing and boundary testing to test the system. In previous testing, we mainly focused on testing the requirements since we do not know the internal structure of the system. However, only performing black box testing is not good enough. In this lab, we have access to see the actual implementation of the system, which enables us to also perform white box testing to the system to analyze the parts of the code uncovered by our black-box testing. In the first part of this lab, we will try to test the coverage rate (statement, branch, method) of our assignment 2 test suite and record the result as a base line. In part 2, we will perform some manual data flow coverage calculation with method Range.Contain and DataUtilities.calculateColumnTotal to have a better understanding of control flow coverage. In part 3, we will write some more test cases based on white box testing technologies to enhance the coverage rate of our testing. We aim to increase statement, branch and method coverage to be over 90%, 70% and 60% respectively. Both black box testing and white box testing is important because they can be complementary to each other. Combining using both testing methods can result in more reliable and comprehensive test cases.
+
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
