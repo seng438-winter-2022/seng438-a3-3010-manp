@@ -19,7 +19,6 @@ In lab2, we did black box testing with some methods of DataUtilities class and R
 
 # 2 Manual data-flow coverage calculations for X and Y methods
 
-Text…
 
 
 <p align="center">
